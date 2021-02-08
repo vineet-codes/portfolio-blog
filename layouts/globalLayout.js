@@ -14,11 +14,13 @@ ${normalize}
 /* Code for Firefox */
 ::-moz-selection {
   /* Code for Firefox */
-  background: tomato;
+  background: ${(props) => props.theme.text};
+  color: ${(props) => props.theme.background};
 }
 
 ::selection {
-  background: tomato;
+  background: ${(props) => props.theme.text};
+  color: ${(props) => props.theme.background};
 }
 
 html {
@@ -42,7 +44,7 @@ body {
 }
 
 #__next {
-  width: 90vw;
+  width: 80vw;
   max-width: 750px;
   margin: 0 auto;
   ${'' /* height: 100vh; */}

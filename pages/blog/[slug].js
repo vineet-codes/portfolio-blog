@@ -20,6 +20,8 @@ const BlogStats = styled.p`
 `;
 
 const Main = styled.main`
+  /* width: 65ch; */
+  /* margin: 0 auto; */
   #table-of-contents + ul a {
     text-decoration: none;
     color: #f1f1f1;

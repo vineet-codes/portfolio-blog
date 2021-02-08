@@ -22,37 +22,19 @@ const CustomLink = (props) => {
 };
 
 const Blockquote = styled.blockquote`
+  background: tomato;
   p {
     color: ${(props) => props.theme.text};
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-style: italic;
-    background: tomato;
     line-height: 1.48;
     padding: 0.5em 1em;
+
     @media screen and (min-width: 770px) {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
     }
   }
 `;
-
-// import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-
-// const Code = (props) => {
-//   const codeElementProps = props.children[0].props;
-//   console.log(props.children);
-//   const languageHighlightClassName = codeElementProps.props.className;
-
-//   return (
-//     <SyntaxHighlighter
-//       language={props.language}
-//       style={{ overflow: 'scroll' }}
-//       useInlineStyles={false}>
-//       <code className={languageHighlightClassName}>
-//         {codeElementProps.children}
-//       </code>
-//     </SyntaxHighlighter>
-//   );
-// };
 
 const Pre = styled.pre`
   text-align: left;
@@ -85,17 +67,6 @@ const Code = ({ children, className }) => {
       theme={theme}
       code={children}
       language={language}>
-      {/* {({ className, style, tokens, getLineProps, getTokenProps }) => (
-        <pre className={className} style={{ ...style, padding: '20px' }}>
-          {tokens.map((line, i) => (
-            <div key={i} {...getLineProps({ line, key: i })}>
-              {line.map((token, key) => (
-                <span key={key} {...getTokenProps({ token, key })} />
-              ))}
-            </div>
-          ))}
-        </pre>
-      )} */}
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <Pre className={className} style={style}>
           {tokens.map((line, i) => (
@@ -117,23 +88,7 @@ const Code = ({ children, className }) => {
 const MDXComponents = {
   Image,
   blockquote: Blockquote,
-  a: CustomLink,
   code: Code,
 };
 
 export default MDXComponents;
-
-// const components = {
-//     a: Link,
-//     blockquote: Blockquote,
-//     em: Em,
-//     h1: H1,
-//     h2: H2,
-//     h3: H3,
-//     img: Img,
-//     li: Li,
-//     ol: Ol,
-//     pre: Code,
-//     strong: Strong,
-//     ul: Ul
-// };
