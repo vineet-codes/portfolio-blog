@@ -8,6 +8,7 @@ import { Page } from '@/styles/globalStyles';
 const Bio = styled.div`
   width: 100%;
   text-align: center;
+  padding: 1em 0;
 
   .bio-text {
     font-weight: 400;
@@ -16,7 +17,7 @@ const Bio = styled.div`
   .bio-image-wrapper {
     border-radius: 5px;
     background-position: center center;
-    box-shadow: 0px 10px 30px -5px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 10px 30px -5px rgba(0, 0, 0, 0.2);
 
     display: flex;
     gap: 0.5em;
@@ -33,31 +34,6 @@ const Bio = styled.div`
     margin-top: 22vh;
   }
 `;
-
-// const AboutMePhoto = () => (
-//   <div className='bio-image-wrapper'>
-//     <img
-//       src='/images/4.jpeg'
-//       alt='Photo of vineet who is the author of this site.'
-//       className='bio-image'
-//     />
-//     <img
-//       src='/images/2.jpeg'
-//       alt='Photo of vineet who is the author of this site.'
-//       className='bio-image'
-//     />
-//     <img
-//       src='/images/3.jpeg'
-//       alt='Photo of vineet who is the author of this site.'
-//       className='bio-image'
-//     />
-//     <img
-//       src='/images/1.jpeg'
-//       alt='Photo of vineet who is the author of this site.'
-//       className='bio-image'
-//     />
-//   </div>
-// );
 
 const AboutMePhoto = () => (
   <div className='bio-image-wrapper'>

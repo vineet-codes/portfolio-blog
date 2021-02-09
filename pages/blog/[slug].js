@@ -60,6 +60,10 @@ const Main = styled.main`
   }
 `;
 
+const Content = styled.div`
+  line-height: 1.6;
+`;
+
 export default function Blog({ mdxSource, frontMatter }) {
   const content = hydrate(mdxSource);
 
@@ -76,7 +80,7 @@ export default function Blog({ mdxSource, frontMatter }) {
           {frontMatter.publishedAt}
         </BlogStats>
         {/* {JSON.stringify(frontMatter)} */}
-        {content}
+        <Content>{content}</Content>
       </Main>
     </Page>
   );
