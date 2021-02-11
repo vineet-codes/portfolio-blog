@@ -5,6 +5,8 @@ import styled from 'styled-components';
 
 import { Page } from '@/styles/globalStyles';
 
+import { motion } from 'framer-motion';
+
 const Bio = styled.div`
   width: 100%;
   text-align: center;
@@ -31,12 +33,16 @@ const Bio = styled.div`
   }
 
   @media screen and (min-width: 750px) {
-    margin-top: 22vh;
+    margin-top: 20vh;
   }
 `;
 
 const AboutMePhoto = () => (
-  <div className='bio-image-wrapper'>
+  <motion.div
+    className='bio-image-wrapper'
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ delay: 1.5 }}>
     <Image
       src='/images/1.jpeg'
       alt='Photo of vineet who is the author of this site.'
@@ -65,12 +71,16 @@ const AboutMePhoto = () => (
       width={112.5}
       className='bio-image'
     />
-  </div>
+  </motion.div>
 );
 
 const BioDescription = () => {
   return (
-    <p className='bio-description'>
+    <motion.p
+      className='bio-description'
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 2 }}>
       Hi, I am Vineet Kumar Singh and this is my personal space on the world
       wide web. I write here to think better and learn effectively. I am
       passionate about <i>Computing, Economics, and Physics</i>. Currently, I
@@ -80,7 +90,7 @@ const BioDescription = () => {
         team at TTS <em>(part of Citigroup)</em>{' '}
       </span>{' '}
       based out of Dublin, Ireland .
-    </p>
+    </motion.p>
   );
 };
 
@@ -91,7 +101,13 @@ const Index = () => {
         <title>Vineet's home on internet</title>
       </Head>
       <Bio>
-        <h1 className='bio-text'>Welcome to my homepage</h1>
+        <motion.h1
+          className='bio-text'
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1 }}>
+          Welcome to my homepage
+        </motion.h1>
         <AboutMePhoto />
         <BioDescription />
       </Bio>
