@@ -68,14 +68,13 @@ const Post = ({ post, index }) => {
 };
 
 const Posts = ({ posts }) => {
+  const len = posts.length;
   return (
     <div>
       <Heading1> All published articles</Heading1>
-      <SubHeading>
-        There are a total of {posts.length} posts in this blog.
-      </SubHeading>
+      <SubHeading>There are a total of {len} posts in this blog.</SubHeading>
       {posts.map((post, index) => (
-        <Post post={post} index={index + 1} key={index + 1} />
+        <Post post={post} index={len - index} key={index + 1} />
       ))}
     </div>
   );
@@ -87,14 +86,29 @@ export default function blog({ posts }) {
       <Head>
         <title>Blog Index</title>
       </Head>
-      {/* {JSON.stringify(posts)} */}
       <Posts posts={posts} />
     </Page>
   );
 }
 
+//  note: the sorting may become slow when lists of posts gets large but that's a problem for a later day
 export async function getStaticProps() {
-  const posts = await getAllFilesFrontMatter('blog');
+  const rawPosts = await getAllFilesFrontMatter('blog');
+
+  const temp = rawPosts.map((post) => {
+    post.publishedAt = new Date(post.publishedAt);
+    return post;
+  });
+
+  const postsObject = temp.sort((a, b) => b.publishedAt - a.publishedAt);
+
+  const allPosts = postsObject.map((post) => {
+    post.publishedAt = JSON.stringify(post.publishedAt);
+    return post;
+  });
+
+  // show only non-draft posts in the catalog
+  const posts = allPosts.filter((post) => post.draft === false);
 
   return { props: { posts } };
 }

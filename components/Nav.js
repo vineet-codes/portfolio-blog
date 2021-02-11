@@ -3,7 +3,9 @@ import Link from 'next/link';
 import styled from 'styled-components';
 import { Container } from '@/styles/globalStyles';
 
-const Header = styled.header`
+import { motion } from 'framer-motion';
+
+const Header = styled(motion.header)`
   /* text-align: center; */
   position: fixed;
   width: 100%;
@@ -213,7 +215,13 @@ const Header = styled.header`
 
 const Nav = () => {
   return (
-    <Header>
+    <Header
+      animate={{ y: 0, opacity: 1 }}
+      initial={{ y: -72, opacity: 0 }}
+      transition={{
+        duration: 0.8,
+        ease: [0.6, 0.05, -0.01, 0.9],
+      }}>
       <h1 className='logo'>
         <Link href='/'>
           <a>Vineet</a>
