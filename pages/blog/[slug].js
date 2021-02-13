@@ -79,25 +79,11 @@ export default function Blog({ mdxSource, frontMatter }) {
           {frontMatter.wordCount} Words| Publication Date:{' '}
           {frontMatter.publishedAt}
         </BlogStats>
-        {/* {JSON.stringify(frontMatter)} */}
         <Content>{content}</Content>
       </Main>
     </Page>
   );
 }
-
-// export default function Blog({ mdxSource, frontMatter }) {
-//   const content = hydrate(mdxSource);
-
-//   return (
-//     <Page>
-//       <Head>
-//         <title>{frontMatter.title}</title>
-//       </Head>
-//       <div>{content}</div>
-//     </Page>
-//   );
-// }
 
 export async function getStaticPaths() {
   const posts = await getFiles('blog');

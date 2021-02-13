@@ -8,7 +8,7 @@ import { AnimateSharedLayout } from 'framer-motion';
 
 function MyApp({ Component, pageProps }) {
   return (
-    <AnimateSharedLayout>
+    <AnimateSharedLayout exitBeforeEnter>
       <GlobalProvider>
         <GlobalLayout>
           <MDXProvider components={MDXComponents}>

@@ -7,6 +7,8 @@ import { getAllFilesFrontMatter } from '@/lib/mdx';
 import { Page } from '@/styles/globalStyles';
 import styled from 'styled-components';
 
+import { motion } from 'framer-motion';
+
 const Heading1 = styled.h1`
   font-weight: 600;
   margin: 0;
@@ -70,13 +72,13 @@ const Post = ({ post, index }) => {
 const Posts = ({ posts }) => {
   const len = posts.length;
   return (
-    <div>
+    <motion.div>
       <Heading1> All published articles</Heading1>
       <SubHeading>There are a total of {len} posts in this blog.</SubHeading>
       {posts.map((post, index) => (
         <Post post={post} index={len - index} key={index + 1} />
       ))}
-    </div>
+    </motion.div>
   );
 };
 
@@ -86,7 +88,7 @@ export default function blog({ posts }) {
       <Head>
         <title>Blog Index</title>
       </Head>
-      <Posts posts={posts} />
+      <Posts posts={posts} exit={{ opacity: 0 }} />
     </Page>
   );
 }
