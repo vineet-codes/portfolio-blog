@@ -2,12 +2,11 @@ import React from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
 import { Page } from '@/styles/globalStyles';
 
-import { motion } from 'framer-motion';
-
-const Bio = styled.div`
+const Bio = styled(motion.div)`
   width: 100%;
   text-align: center;
   padding: 1em 0;
@@ -83,8 +82,8 @@ const BioDescription = () => {
       transition={{ delay: 2 }}>
       Hi, I am Vineet Kumar Singh and this is my personal space on the world
       wide web. I write here to think better and learn effectively. I am
-      passionate about <i>Computing, Economics, and Physics</i>. Currently, I
-      work as{' '}
+      passionate about and specialize in{' '}
+      <i>Computing, Economics, and Physics</i>. Currently, I work as{' '}
       <span className='highlighter'>
         vice president of global product development in Payment & Recievables
         team at TTS <em>(part of Citigroup)</em>{' '}
@@ -100,7 +99,7 @@ const Index = () => {
       <Head>
         <title>Vineet's home on internet</title>
       </Head>
-      <Bio>
+      <Bio exit={{ opacity: 0 }}>
         <motion.h1
           className='bio-text'
           initial={{ opacity: 0 }}

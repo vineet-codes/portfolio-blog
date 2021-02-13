@@ -235,6 +235,11 @@ const Nav = () => {
               <a>Blog</a>
             </Link>
           </li>
+          <li className='nav-list-item'>
+            <Link href='/newsletter'>
+              <a>Newsletter</a>
+            </Link>
+          </li>
         </ul>
       </nav>
       <label htmlFor='nav-toggle' className='nav-toggle-label'>
