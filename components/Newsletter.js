@@ -1,6 +1,5 @@
 import React, { useRef, useState } from 'react';
-import styled from 'styled-components';
-import Image from 'next/image';
+import styled, { css } from 'styled-components';
 
 const NewsLetterCard = styled.div`
   padding: 1em;
@@ -17,18 +16,16 @@ const NewsLetterCard = styled.div`
   }
 
   p {
-    font-size: 0.9rem;
+    font-size: 1rem;
     margin-top: 0;
     margin-bottom: 1.5em;
   }
 `;
 
 const Form = styled.form`
-  font-size: 0.8rem;
   margin: 0 auto;
 
   .email-label {
-    font-size: 0.8rem;
     opacity: 0.8;
     display: block;
     margin-bottom: 0;
@@ -39,31 +36,14 @@ const Form = styled.form`
     background: ${(props) => props.theme.background};
     color: ${(props) => props.theme.text};
     padding: 0.25em 0.5em;
-    font-size: 0.9rem;
+    display: block;
+    width: 90%;
     /* border-radius: 5px; */
     /* width: 100%; */
   }
 
   .email-input:focus {
     border: 1px solid tomato;
-  }
-
-  .email-submit {
-    display: inline-block;
-    padding: 0.5em 1em;
-    background: tomato;
-    border: none;
-    /* border-radius: 5px; */
-    letter-spacing: 1px;
-    font-size: 0.9rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    color: ${(props) => props.theme.text};
-    margin-top: 0.5em;
-  }
-
-  .email-submit:hover {
-    cursor: pointer;
   }
 
   .message {
@@ -73,16 +53,27 @@ const Form = styled.form`
   }
 
   @media screen and (min-width: 750px) {
-    font-size: 1rem;
-
     .email-input {
       margin-top: 0;
     }
-
-    .email-submit {
-      margin-left: 0.5em;
-    }
   }
+`;
+
+const Button = styled.button`
+  background: transparent;
+  border-radius: 3px;
+  border: 2px solid tomato;
+  color: ${(props) => props.theme.text};
+  margin: 0.5em 0em;
+  padding: 0.25em 1em;
+  cursor: pointer;
+
+  ${(props) =>
+    props.primary &&
+    css`
+      background: tomato;
+      color: white;
+    `}
 `;
 
 const Newsletter = () => {
@@ -122,7 +113,7 @@ const Newsletter = () => {
   return (
     <NewsLetterCard>
       <h1>Subscribe to my newsletter</h1>
-      <p> Where i share cool stuff about technology</p>
+      <p> Where i share my take on disrutive technologies.</p>
       <Form onSubmit={subscribe}>
         <label className='email-label' htmlFor='email-input'>
           {'Email Address'}
@@ -136,9 +127,9 @@ const Newsletter = () => {
           required
           type='email'
         />
-        <button className='email-submit ' type='submit'>
+        <Button type='submit' primary>
           {'✨ Subscribe 💌'}
-        </button>
+        </Button>
         <p className='message'>
           {message
             ? message

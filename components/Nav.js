@@ -240,6 +240,11 @@ const Nav = () => {
               <a>Newsletter</a>
             </Link>
           </li>
+          <li className='nav-list-item'>
+            <Link href='/cutdcrap'>
+              <a>Podcast</a>
+            </Link>
+          </li>
         </ul>
       </nav>
       <label htmlFor='nav-toggle' className='nav-toggle-label'>
