@@ -56,3 +56,10 @@ export const Page = styled.div`
   margin-top: 6rem;
   /* border: 2px solid tomato; */
 `;
+
+export const Center = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 25vh;
+`;
