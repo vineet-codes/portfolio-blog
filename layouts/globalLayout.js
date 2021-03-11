@@ -64,6 +64,9 @@ const GlobalLayout = ({ children }) => {
   const darkTheme = {
     background: '#171717',
     text: '#f1f1f1',
+    brand: {
+      c1: 'rgb(255, 0, 114)',
+    },
   };
 
   const lightTheme = {

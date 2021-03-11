@@ -22,10 +22,10 @@ const CustomLink = (props) => {
 };
 
 const Blockquote = styled.blockquote`
-  background: tomato;
+  background: rgb(255, 0, 114);
   p {
     color: ${(props) => props.theme.text};
-    font-size: 1.1rem;
+    font-size: 0.91rem;
     font-style: italic;
     line-height: 1.48;
     padding: 0.5em 1em;
