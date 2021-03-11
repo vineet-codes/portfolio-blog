@@ -43,7 +43,7 @@ const Form = styled.form`
   }
 
   .email-input:focus {
-    border: 1px solid tomato;
+    border: 1px solid ${(props) => props.theme.brand.c1};
   }
 
   .message {
@@ -61,8 +61,8 @@ const Form = styled.form`
 
 const Button = styled.button`
   background: transparent;
-  border-radius: 3px;
-  border: 2px solid tomato;
+  /* border-radius: 5px; */
+  border: 2px solid ${(props) => props.theme.brand.c1};
   color: ${(props) => props.theme.text};
   margin: 0.5em 0em;
   padding: 0.25em 1em;
@@ -71,7 +71,7 @@ const Button = styled.button`
   ${(props) =>
     props.primary &&
     css`
-      background: tomato;
+      background: ${(props) => props.theme.brand.c1};
       color: white;
     `}
 `;

@@ -22,7 +22,7 @@ const PodcastContainer = styled.div`
     width: 80px;
     height: 80px;
     object-fit: cover;
-    border: 1px solid ${(props) => props.theme.text};
+    border: 1px solid ${(props) => props.theme.brand.c1};
     border-radius: 50%;
   }
 
@@ -35,12 +35,12 @@ const PodcastContainer = styled.div`
   .coming-soon p {
     display: inline-block;
     padding: 0.4em 0.8em;
-    border: 1px solid tomato;
+    border: 1px solid ${(props) => props.theme.brand.c1};
 
     a {
-      color: tomato;
+      color: ${(props) => props.theme.brand.c1};
       text-decoration: none;
-      border-bottom: 1px solid tomato;
+      border-bottom: 1px solid ${(props) => props.theme.brand.c1};
     }
   }
 

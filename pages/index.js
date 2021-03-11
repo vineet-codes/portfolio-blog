@@ -28,7 +28,7 @@ const Bio = styled(motion.div)`
   }
 
   .highlighter {
-    color: tomato;
+    color: ${(props) => props.theme.brand.c1};
   }
 
   @media screen and (min-width: 750px) {
