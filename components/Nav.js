@@ -12,7 +12,7 @@ const Header = styled(motion.header)`
   top: 0;
   left: 0;
   z-index: 999;
-  background: rgba(23, 23, 23, 1);
+  background: ${(props) => props.theme.background};
   /* box-shadow: 0px 2px 12px -2px rgba(0, 0, 0, 0.25); */
 
   .logo {
@@ -29,8 +29,8 @@ const Header = styled(motion.header)`
     text-transform: uppercase;
     font-weight: 200;
     font-size: 1.5rem;
-    color: #fff;
-    border: 1px solid #ffffff;
+    color: ${(props) => props.theme.brand.c1};
+    border: 1px solid ${(props) => props.theme.brand.c1};
     padding: 0.05em 0.5em;
   }
 
@@ -39,7 +39,7 @@ const Header = styled(motion.header)`
     text-align: right;
     top: 100%;
     right: 0;
-    background: rgba(23, 23, 23, 0.95);
+    background: ${(props) => props.theme.background};
 
     width: 100%;
     display: none;
