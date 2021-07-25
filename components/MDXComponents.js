@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Image from 'next/image';
 
 import Highlight, { defaultProps } from 'prism-react-renderer';
-import theme from 'prism-react-renderer/themes/dracula';
+import theme from 'prism-react-renderer/themes/vsDark';
 
 const CustomLink = (props) => {
   const href = props.href;
@@ -41,6 +41,7 @@ const Pre = styled.pre`
   margin: 1em 0;
   padding: 0.5em;
   overflow: scroll;
+  font-size: 0.8rem;
 `;
 
 const Line = styled.div`
@@ -65,7 +66,7 @@ const Code = ({ children, className }) => {
     <Highlight
       {...defaultProps}
       theme={theme}
-      code={children}
+      code={children.trim()}
       language={language}>
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <Pre className={className} style={style}>

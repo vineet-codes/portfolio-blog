@@ -72,6 +72,9 @@ const GlobalLayout = ({ children }) => {
   const lightTheme = {
     background: '#ffffff',
     text: '#171717',
+    brand: {
+      c1: 'rgb(255, 0, 114)',
+    },
   };
 
   return (

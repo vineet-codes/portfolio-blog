@@ -86,7 +86,8 @@ const BioDescription = () => {
       <i>Computing, Economics, and Physics</i>. Currently, I work as{' '}
       <span className='highlighter'>
         vice president of global product development in Payment & Recievables
-        team at TTS <em>(part of Citigroup)</em>{' '}
+        team at TTS{' '}
+        <em>(part of Institutional Clients Business at Citigroup)</em>{' '}
       </span>{' '}
       based out of Dublin, Ireland .
     </motion.p>

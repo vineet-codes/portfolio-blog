@@ -19,9 +19,20 @@ const BlogStats = styled.p`
   font-size: 0.95rem;
 `;
 
+// styles for parsed MDX styling
 const Main = styled.main`
   /* width: 65ch; */
   /* margin: 0 auto; */
+
+  a {
+    color: ${(props) => props.theme.brand.c1};
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
   #table-of-contents + ul a {
     text-decoration: none;
     color: #f1f1f1;
@@ -37,7 +48,7 @@ const Main = styled.main`
   }
 
   #table-of-contents + ul a:hover {
-    color: tomato;
+    color: ${(props) => props.theme.brand.c1};
     border-bottom: 1px dashed ${(props) => props.theme.text};
   }
 
@@ -53,10 +64,19 @@ const Main = styled.main`
 
   h2 a {
     color: ${(props) => props.theme.text};
+    text-decoration: none;
   }
 
   h1 > a :hover {
     text-decoration: underline;
+  }
+
+  h2 > a :hover {
+    text-decoration: underline;
+  }
+
+  P > img {
+    width: 100%;
   }
 `;
 

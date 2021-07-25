@@ -216,12 +216,13 @@ const Header = styled(motion.header)`
 const Nav = () => {
   return (
     <Header
-      animate={{ y: 0, opacity: 1 }}
-      initial={{ y: -72, opacity: 0 }}
-      transition={{
-        duration: 0.8,
-        ease: [0.6, 0.05, -0.01, 0.9],
-      }}>
+    // animate={{ y: 0, opacity: 1 }}
+    // initial={{ y: -72, opacity: 0 }}
+    // transition={{
+    //   duration: 0.8,
+    //   ease: [0.6, 0.05, -0.01, 0.9],
+    // }}
+    >
       <h1 className='logo'>
         <Link href='/'>
           <a>Vineet</a>
@@ -240,11 +241,11 @@ const Nav = () => {
               <a>Newsletter</a>
             </Link>
           </li>
-          <li className='nav-list-item'>
-            <Link href='/cutdcrap'>
+          {/* <li className='nav-list-item'>
+            <Link href='/twitter'>
               <a>Podcast</a>
             </Link>
-          </li>
+          </li> */}
         </ul>
       </nav>
       <label htmlFor='nav-toggle' className='nav-toggle-label'>

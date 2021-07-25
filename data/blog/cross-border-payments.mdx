@@ -1,0 +1,40 @@
+---
+title: 'Understanding Cross Border Payments'
+tags: ['payments', 'cross-border']
+draft: false
+summary: 'How does money move around the world'
+publishedAt: ''
+---
+
+While there are plethora of articles around the web of how flow of information on internet works explaing DNS, HTTPs etc etc. However, there is a shortage of information on how does money move around the world. What is more shocking is that not nearly enough people know about it and perhaps thats why payments carrers are more often than not are defined as apprentice carrers. Let me lay this out for you and then we all can joke and smirk about it. If you are a person entering the world of payments trying to understand the ecosystem, the best advice you will get is to talk to people. Every team seems to have this "know it all" person. I have nothing against this person but respect. Although, this model of knowledge transfer seems a bit ridiculous especially if come from a background that i had in cryptography, distributed systems and machine learning. These fields are so open that almost you can get away with not going to school and just educating your self through open education material. So with all that rant, I want to change this for payment industry. I will try and share my understanding of concepts as and when i learn them.
+
+So, Cross border payments are typically hard to understand not because they are complicated but because in order to understand them one needs to understand a lot of abstractions/ concepts. Because as with all software systems, one starts by understanding the system architecture. We will do the same.
+
+# Table of Contents
+
+# Payment Systems
+
+We will begin our journey by examining the payment architecture in one country. We will then to try to generalize the concepts we learn to other countries. Lets start with basics. For a payment to occur, we need `two parties willing to exchange value`. Governments (or more precisely central banks) `operate and coordinate an infrastructure to execute (facilitate) this exchange of value`. We call this infrastructure `payment system` of that country. Payment systems typically follow one of two models, 1) Open Loop model and 2) Closed loop model. We will first study these models and then use them to understand payment infrastructure of some representative countries in the world.
+
+## Open loop models
+
+![Open Loop](/post-assets/xborder/open-loop-model.png)
+
+- Open loop systems can be compared with hub-and-spoke model as seen in the diagram above.
+- Banks and PSP are connected to `payment system` on one side and customers/end-party one the other side. This allows banks of the customers to coordinate payments for them even though the there is no direct connectivity between them. `Intermediation` is a word that is thrwon around to decribe essentially the same concept.
+- Since every bank or PSP connects to Payment system, effectively they form a network. Network of Banks and PSP's. This allows banks and PSP's to transact with each other without creating direct relationships.
+- It's called `open` because any bank/psp (see orange bank) and its end customers can join the network. In practice you would go through some level of vetting and getting a license etc etc. but technically anyone can join the network.
+- This allows open loop systems to scale rapidly. All you have to do is become a PSP or a Bank :) .
+
+Next we will understand what does this Payment system is made of ?
+
+Central Bank System and Intrabank Exchange Systems.
+Direct and Indirect Membership / Participation
+
+### Reference
+
+- [Fundamentals to Understand Domestic Payments Anywhere in the World](https://www.youtube.com/watch?v=oZhGxt71HAI&t)
+- [Key Strategies to Understand how Cross-Border Payments Work](https://www.youtube.com/watch?v=EEBtE7A7zKw)
+- [strategies-understand-how-cross-border-payments-work](https://www.paiementor.com/4-key-strategies-understand-how-cross-border-payments-work/)
+- https://stripe.com/en-ie/payments/payment-methods-guide
+- https://www.youtube.com/watch?v=AmRt_QdinrM

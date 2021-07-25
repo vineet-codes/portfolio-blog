@@ -1,0 +1,113 @@
+---
+title: 'Postgress Notes'
+tags: ['databases', 'engineering']
+draft: false
+summary: 'A collection of database engineering concepts in one single place.'
+publishedAt: ''
+---
+
+_Abstract_: In this blog we are going to learn about databases.
+
+# Table of contents
+
+# ACID
+
+When you generally talk to database people, one will come across ACID pretty soon. ACID is an acronymn which stands for 4 concepts, namely Atomicity, Consistency, Isolation and Durability.
+
+# Indexes and Indexing
+
+Creating an `Index` on a particular attribute of the table.
+
+```sql
+CREATE INDEX users_username_idx ON users(username);
+```
+
+The default naming convention of index names is `{tablename}_{attribute_name}_idx`. This name is assigned if none given at the time of creating index.
+
+Now that we have created an Index, how do we find the size of it ?
+
+```sql
+SELECT pg_size_pretty(pg_relation_size('users_username_idx'));
+```
+
+In our database example it is `184kb`;
+
+To delete an index, we do
+
+```sql
+DROP INDEX users_username_idx;
+```
+
+There are many different types of indexes in Postgress. Most of the time you need B+tree indexes. Different types of Indexes are:
+
+- **B-Tree**: Genereal purpose index, 99% of the time you need this.
+- **Hash**: Speeds up simple equality checks.
+- **GiST**: Geometry, full text search.
+- **SP-GiST**: Clustered data, such as dates - many rows habe the same year.
+- **GIN**: For columns that contain arrays or JSON.
+- **BRIN**: Specialized for really large datasets.
+
+There are some indexes created by Postgress automatically. Postgress automatically creates an index for the `primary key` of every table. It also creates an index for any `UNIQUE` constraint. These don't get listed in pgAdmin. So, how do we find them ? `pg_class` table to the rescue.
+
+```sql
+SELECT relname, relkind
+FROM pg_class
+WHERE relkind='i';
+```
+
+We have seen how to create an index, how to measure it's size, how to delete them and also figure out how to check automatically created indexes by Postgree.
+
+# Query Tuning
+
+We can write queries with below keywords and get back some information which will give us the performance numbers.
+
+- EXPLAIN: Build a query plan and display information about it
+- EXPLAIN ANALYZE: Build a query plan, run it and siplay information about it
+
+pg_stats table maintained by Postgres.
+
+From the result of EXPLAIN or EXPLAIN ANALYZE, we can inspect following characterstic fo each node.
+
+- cost: Amount of processing power required for the particular node stage
+- rows: How many rows will this step produce (guess)
+- width: Average number of bytes for each row (guess)
+
+# Recursive Common Table Expressions
+
+What are they ?
+
+How do they work ?
+
+Example ?
+
+Sample usecases
+
+Why do they work ?
+
+# Materialized Views
+
+What are they ?
+
+How do they work ?
+
+Example ?
+
+Sample usecases
+
+Why do they work ?
+
+# Getting random rows from a table
+
+Getting a single random row, or a few rows, from a table in order to get representative data for example is a frequent need. Learn the answers [here](https://blog.hagander.net/getting-random-rows-faster-very-much-faster-249/)
+
+# Building an Express api with Postgres
+
+Please see [pg-simple-api](https://github.com/vineet-codes/pg-simple-api). This is a template i use for quick prototying tasks which can scale to decent traffic.
+
+# SQL based data science
+
+- [SQL for data analysis](https://hakibenita.com/sql-for-data-analysis). This article is a very good overview of how we can use SQL for common analysis tasks.
+
+# Misc Topics
+
+- [Why Uber switched from Postgres to Mysql](https://eng.uber.com/postgres-to-mysql-migration/)
