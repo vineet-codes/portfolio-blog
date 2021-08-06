@@ -6,22 +6,7 @@ import Image from 'next/image';
 import Highlight, { defaultProps } from 'prism-react-renderer';
 import theme from 'prism-react-renderer/themes/vsDark';
 
-const CustomLink = (props) => {
-  const href = props.href;
-  const isInternalLink = href && (href.startsWith('/') || href.startsWith('#'));
-
-  if (isInternalLink) {
-    return (
-      <Link href={href}>
-        <a {...props} />
-      </Link>
-    );
-  }
-
-  return <a target='_blank' rel='noopener noreferrer' {...props} />;
-};
-
-const Blockquote = styled.blockquote`
+export const Blockquote = styled.blockquote`
   background: rgb(255, 0, 114);
   p {
     color: ${(props) => props.theme.text};
@@ -60,8 +45,8 @@ const LineContent = styled.span`
   display: table-cell;
 `;
 
-const Code = ({ children, className }) => {
-  const language = className.replace(/language-/, '');
+export const Code = (props) => {
+  const language = props.className.replace(/language-/, '');
   return (
     <Highlight
       {...defaultProps}

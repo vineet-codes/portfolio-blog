@@ -1,9 +1,6 @@
 import { GlobalProvider } from '@/contexts/globalContext';
 import GlobalLayout from '@/layouts/globalLayout';
 
-import MDXComponents from '@/components/MDXComponents';
-import { MDXProvider } from '@mdx-js/react';
-
 import { AnimateSharedLayout } from 'framer-motion';
 
 function MyApp({ Component, pageProps }) {
@@ -11,9 +8,7 @@ function MyApp({ Component, pageProps }) {
     <AnimateSharedLayout exitBeforeEnter>
       <GlobalProvider>
         <GlobalLayout>
-          <MDXProvider components={MDXComponents}>
-            <Component {...pageProps} />
-          </MDXProvider>
+          <Component {...pageProps} />
         </GlobalLayout>
       </GlobalProvider>
     </AnimateSharedLayout>

@@ -2,7 +2,9 @@ import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 
-import { getAllFilesFrontMatter } from '@/lib/mdx';
+// import { getAllFilesFrontMatter } from '@/lib/mdx';
+
+import { getAllPosts } from '@/lib/mdx-bundle';
 
 import { Page } from '@/styles/globalStyles';
 import styled from 'styled-components';
@@ -60,8 +62,8 @@ const Summary = styled.p`
 const Post = ({ post, index }) => {
   return (
     <PostContainer index={index}>
-      <Heading2 index={index}>{post.title}</Heading2>
-      <Summary>{post.summary}</Summary>
+      <Heading2 index={index}>{post.frontmatter.title}</Heading2>
+      <Summary>{post.frontmatter.summary}</Summary>
       <Link href={`/blog/${post.slug}`}>
         <a>Read More &#8594;</a>
       </Link>
@@ -71,6 +73,7 @@ const Post = ({ post, index }) => {
 
 const Posts = ({ posts }) => {
   const len = posts.length;
+  console.log(len);
   return (
     <motion.div>
       <Heading1> All published articles</Heading1>
@@ -95,22 +98,31 @@ export default function blog({ posts }) {
 
 //  note: the sorting may become slow when lists of posts gets large but that's a problem for a later day
 export async function getStaticProps() {
-  const rawPosts = await getAllFilesFrontMatter('blog');
+  // const rawPosts = await getAllFilesFrontMatter('blog');
+  const rawPosts = getAllPosts();
+
+  // console.log(rawPosts);
 
   const temp = rawPosts.map((post) => {
-    post.publishedAt = new Date(post.publishedAt);
+    // post.publishedAt = new Date(post.publishedAt);
+    post.frontmatter.publishedAt = new Date(post.frontmatter.publishedAt);
+
     return post;
   });
 
-  const postsObject = temp.sort((a, b) => b.publishedAt - a.publishedAt);
+  const postsObject = temp.sort(
+    (a, b) => b.frontmatter.publishedAt - a.frontmatter.publishedAt
+  );
 
   const allPosts = postsObject.map((post) => {
-    post.publishedAt = JSON.stringify(post.publishedAt);
+    post.frontmatter.publishedAt = JSON.stringify(post.frontmatter.publishedAt);
     return post;
   });
 
+  console.log(allPosts);
+
   // show only non-draft posts in the catalog
-  const posts = allPosts.filter((post) => post.draft === false);
+  const posts = allPosts; // .filter((post) => post.frontmatter.draft === false);
 
   return { props: { posts } };
 }

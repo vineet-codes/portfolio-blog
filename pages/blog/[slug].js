@@ -1,10 +1,13 @@
-import hydrate from 'next-mdx-remote/hydrate';
 import Head from 'next/head';
+import React from 'react';
 
-import { getFiles, getFileBySlug } from '@/lib/mdx';
+import { getMDXComponent } from 'mdx-bundler/client';
+import { getFiles, getSinglePost } from '@/lib/mdx-bundle';
 import { Page } from '@/styles/globalStyles';
 
 import styled from 'styled-components';
+
+import { CustomLink } from '@/components/custom-mdx-components';
 
 const BlogTitle = styled.h1`
   padding-bottom: 0;
@@ -84,8 +87,8 @@ const Content = styled.div`
   line-height: 1.6;
 `;
 
-export default function Blog({ mdxSource, frontMatter }) {
-  const content = hydrate(mdxSource);
+export default function Blog({ code, frontMatter }) {
+  const Component = React.useMemo(() => getMDXComponent(code), [code]);
 
   return (
     <Page>
@@ -99,7 +102,9 @@ export default function Blog({ mdxSource, frontMatter }) {
           {frontMatter.wordCount} Words| Publication Date:{' '}
           {frontMatter.publishedAt}
         </BlogStats>
-        <Content>{content}</Content>
+        <Content>
+          <Component />
+        </Content>
       </Main>
     </Page>
   );
@@ -107,7 +112,6 @@ export default function Blog({ mdxSource, frontMatter }) {
 
 export async function getStaticPaths() {
   const posts = await getFiles('blog');
-
   return {
     paths: posts.map((p) => ({
       params: {
@@ -119,7 +123,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const post = await getFileBySlug('blog', params.slug);
+  const post = await getSinglePost(params.slug);
 
   return { props: post };
 }
