@@ -49,7 +49,7 @@ There are many different types of indexes in Postgress. Most of the time you nee
 
 There are some indexes created by Postgress automatically. Postgress automatically creates an index for the `primary key` of every table. It also creates an index for any `UNIQUE` constraint. These don't get listed in pgAdmin. So, how do we find them ? `pg_class` table to the rescue.
 
-```sql
+```sql showLineNumbers
 SELECT relname, relkind
 FROM pg_class
 WHERE relkind='i';

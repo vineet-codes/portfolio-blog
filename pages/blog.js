@@ -119,10 +119,10 @@ export async function getStaticProps() {
     return post;
   });
 
-  console.log(allPosts);
+  // console.log(allPosts);
 
   // show only non-draft posts in the catalog
-  const posts = allPosts; // .filter((post) => post.frontmatter.draft === false);
+  const posts = allPosts.filter((post) => post.frontmatter.draft === false);
 
   return { props: { posts } };
 }

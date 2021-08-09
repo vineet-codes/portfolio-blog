@@ -7,7 +7,7 @@ import { Page } from '@/styles/globalStyles';
 
 import styled from 'styled-components';
 
-import { components } from '@/components/custom-mdx-components';
+import { components } from '@/styles/mdxCompSub';
 
 const BlogTitle = styled.h1`
   padding-bottom: 0;
@@ -103,7 +103,7 @@ export default function Blog({ code, frontMatter }) {
           {frontMatter.publishedAt}
         </BlogStats>
         <Content>
-          <Component compoents={components} />
+          <Component components={components} />
         </Content>
       </Main>
     </Page>

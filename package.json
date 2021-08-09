@@ -9,6 +9,8 @@
     "clean": "rm -rf ./node_modules"
   },
   "dependencies": {
+    "@radix-ui/react-collapsible": "0.0.17",
+    "@stitches/react": "^0.2.4",
     "esbuild": "^0.12.19",
     "framer-motion": "^3.3.0",
     "gray-matter": "^4.0.3",
