@@ -45,8 +45,9 @@ const LineContent = styled.span`
   display: table-cell;
 `;
 
-export const Code = (props) => {
-  const language = props.className.replace(/language-/, '');
+export const Code = ({ className, children }) => {
+  const language = className.replace(/language-/, '');
+  console.log('reacher her');
   return (
     <Highlight
       {...defaultProps}
